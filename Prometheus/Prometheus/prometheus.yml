@@ -1,0 +1,38 @@
+# my global config
+global:
+  scrape_interval:     15s
+  evaluation_interval: 15s
+
+# Alertmanager configuration
+alerting:
+  alertmanagers:
+  - static_configs:
+    - targets:
+      - localhost:9093
+
+# Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
+rule_files:
+  - "rules.yml"
+  # - "second_rules.yml"
+
+# A scrape configuration containing exactly one endpoint to scrape:
+# Here it's Prometheus itself.
+scrape_configs:
+  - job_name: 'prometheus'
+    static_configs:
+    - targets: ['localhost:9090']
+      #  - job_name: node
+      #    static_configs:
+      #    - targets: ['localhost:9100','192.168.1.16:9100']
+  - job_name: 'apiRest'
+    static_configs:
+    - targets: ['localhost:4000']
+  - job_name: 'apache'
+    static_configs:
+    - targets: ['localhost:9117']
+  - job_name: 'Elasticsearch'
+    static_configs:
+    - targets: ['localhost:9114']
+  - job_name: 'mysql'
+    static_configs:
+    - targets: ['localhost:9104']

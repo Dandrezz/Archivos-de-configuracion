@@ -1,0 +1,13 @@
+groups:
+  - name: example
+    rules:
+    - alert: InstanceDown
+      expr: up == 0
+      for: 20s
+  - name: mysql
+    rules:
+    - alert: Aborted Connections
+      expr: rate(mysql_global_status_aborted_connects[1m]) > 0
+      for: 60s
+
+#irate(mysql_global_status_aborted_connects[5m])
