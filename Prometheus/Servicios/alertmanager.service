@@ -1,0 +1,10 @@
+[Unit]
+Description=Alermanager service
+
+[Service]
+User=root
+ExecStart=/opt/alertmanager/alertmanager  --config.file /opt/alertmanager/alertmanager.yml
+
+[Install]
+WantedBy=multi-user.target
+
